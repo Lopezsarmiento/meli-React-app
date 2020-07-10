@@ -48,3 +48,7 @@
 .line-thru {
   text-decoration: line-through;
 }
+
+.bg-meli {
+  background-color: yellow;
+}
