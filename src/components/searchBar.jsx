@@ -6,7 +6,7 @@ const SearchBar = ({ handleSubmit }) => {
     <nav className="navbar navbar-light bg-meli">
       <div className="input-group input-group-lg mt-3 mb-3">
         <a className="navbar-brand" href="/">
-          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.7.0/mercadolibre/logo__large_plus.png"></img>
+          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.7.0/mercadolibre/logo__large_plusgit st.png"></img>
         </a>
         <input
           type="text"
