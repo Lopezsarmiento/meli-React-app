@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Item = ({ items }) => {
   return (
@@ -15,16 +16,12 @@ const Item = ({ items }) => {
                   <span className="card-text">Envío con normalidad</span>
                 </p>
                 <h4 className="card-title">
-                  <a
+                  <Link
                     className="text-reset text-decoration-none"
-                    href={item.permalink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    to="/item/:id"
                   >
-                    <span className="card-text font-weight-light">
-                      {item.title}
-                    </span>
-                  </a>
+                    {item.title}
+                  </Link>
                 </h4>
                 <h6>
                   <a

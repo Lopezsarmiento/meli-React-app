@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 // components
 import ItemsList from "./components/itemsList";
 import SearchBar from "./components/searchBar";
+import Detail from "./components/detail";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -35,9 +37,15 @@ function App() {
   return (
     <React.Fragment>
       <SearchBar handleSubmit={handleSubmit}></SearchBar>
-      <hr></hr>
       <div className="">
-        <ItemsList items={items}></ItemsList>
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={(props) => <ItemsList items={items}></ItemsList>}
+          ></Route>
+          <Route path="/item/:id" component={Detail}></Route>
+        </Switch>
       </div>
     </React.Fragment>
   );
