@@ -18,7 +18,7 @@ const Item = ({ items }) => {
                 <h4 className="card-title">
                   <Link
                     className="text-reset text-decoration-none"
-                    to="/item/:id"
+                    to={`/item/${item.id}`}
                   >
                     {item.title}
                   </Link>
