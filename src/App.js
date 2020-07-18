@@ -22,7 +22,9 @@ function App() {
         <Switch>
           <Route
             path="/items"
-            render={(props) => <ItemsList {...props}></ItemsList>}
+            render={(props) => (
+              <ItemsList {...props} query={search}></ItemsList>
+            )}
           ></Route>
           <Route path="/item/:id" component={Detail}></Route>
           <Route path="/" exact component={Home}></Route>

@@ -3,23 +3,25 @@ import axios from "axios";
 // components
 import Aside from "./aside";
 import Item from "./item";
+import Loading from "./loading";
 
 const ItemsList = ({ location }) => {
-  const search = location.search;
+  const search = location.search.substring(3);
   const [items, setItems] = useState([]);
-  const url = `https://api.mercadolibre.com/sites/MLA/search${search}&&limit=10`;
-  console.log("url: ", url);
+  const [isLoading, setIsloading] = useState(false);
+  const url = `http://localhost:4000/api/search/${search}`;
 
   useEffect(() => {
-    // if (search === "") {
-    //   return;
-    // }
     async function fetchData() {
+      // activate loader
+      setIsloading(true);
       try {
         const { data } = await axios.get(url);
         console.log("data: ", data);
-        setItems(data.results);
+        setItems(data);
+        setIsloading(false);
       } catch (err) {
+        setIsloading(false);
         console.log(err);
       }
     }
@@ -29,14 +31,17 @@ const ItemsList = ({ location }) => {
 
   return (
     <div className="container-fluid bg-light rounded-lg shadow-lg">
-      <div className="row">
-        <div className="col-md-4">
-          <Aside></Aside>
+      {isLoading && <Loading></Loading>}
+      {!isLoading && (
+        <div className="row">
+          <div className="col-md-4">
+            <Aside></Aside>
+          </div>
+          <div className="col-md-8 mb-2 mt-2">
+            <Item items={items}></Item>
+          </div>
         </div>
-        <div className="col-md-8 mb-2 mt-2">
-          <Item items={items}></Item>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

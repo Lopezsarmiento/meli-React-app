@@ -6,6 +6,10 @@ const SearchBar = ({ handleSubmit }) => {
   const [query, setQuery] = useState("");
 
   const handleClick = (e) => {
+    e.preventDefault();
+    if (query === "") {
+      return;
+    }
     handleSubmit(e, query);
     window.location = `/items?q=${query}`;
   };
